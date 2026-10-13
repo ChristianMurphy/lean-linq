@@ -15,7 +15,8 @@ elab "dbLinkArgs%" : term => do
       let pq ← IO.Process.output { cmd := "brew", args := #["--prefix", "libpq"] }
       let tds ← IO.Process.output { cmd := "brew", args := #["--prefix", "freetds"] }
       let my ← IO.Process.output { cmd := "brew", args := #["--prefix", "mysql-client"] }
-      pure (#["-L" ++ sdk.stdout.trimAscii.toString ++ "/usr/lib",
+      -- Use the matching Apple linker for SDK stubs that bundled lld may not support.
+      pure (#["--ld-path=/usr/bin/ld", "-L" ++ sdk.stdout.trimAscii.toString ++ "/usr/lib",
               "-L" ++ pq.stdout.trimAscii.toString ++ "/lib",
               "-L" ++ tds.stdout.trimAscii.toString ++ "/lib",
               "-L" ++ my.stdout.trimAscii.toString ++ "/lib"] ++ base)

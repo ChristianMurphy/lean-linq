@@ -1,7 +1,7 @@
 # lean-linq
 
 [![CI](https://github.com/palladin/lean-linq/actions/workflows/ci.yml/badge.svg)](https://github.com/palladin/lean-linq/actions/workflows/ci.yml)
-[![Lean 4](https://img.shields.io/badge/Lean-v4.31.0-blue)](https://leanprover.github.io/)
+[![Lean 4](https://img.shields.io/badge/Lean-v4.35.0-blue)](https://leanprover.github.io/)
 [![dialects](https://img.shields.io/badge/SQL-SQLite%20%7C%20PostgreSQL%20%7C%20MySQL%20%7C%20SQL%20Server-informational)](#integration-tests)
 
 A type-safe, deeply-embedded SQL query DSL for Lean 4 — language-integrated queries built
