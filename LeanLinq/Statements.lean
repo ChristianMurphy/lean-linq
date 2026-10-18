@@ -26,7 +26,7 @@ def InsertStmt.value (i : InsertStmt ts n s) (name : String) {t : SqlPrim}
 
 /-- Insert NULL — only into a column the schema declares NULL-capable. -/
 def InsertStmt.valueNull (i : InsertStmt ts n s) (name : String) {t : SqlPrim}
-    {nl : Bool} [HasCol s name ⟨t, nl⟩] (h : nl = true := by rfl) :
+    {nl : Bool} [HasCol s name ⟨t, nl⟩] (_h : nl = true := by rfl) :
     InsertStmt ts n s :=
   { i with values := i.values ++ [(name, ⟨⟨t, true⟩, .nullC t⟩)] }
 
@@ -51,7 +51,7 @@ def UpdateStmt.setWith (u : UpdateStmt ts n s) (name : String) {t : SqlPrim}
 
 /-- Set NULL — only on a column the schema declares NULL-capable. -/
 def UpdateStmt.setNull (u : UpdateStmt ts n s) (name : String) {t : SqlPrim}
-    {nl : Bool} [HasCol s name ⟨t, nl⟩] (h : nl = true := by rfl) :
+    {nl : Bool} [HasCol s name ⟨t, nl⟩] (_h : nl = true := by rfl) :
     UpdateStmt ts n s :=
   { u with sets := u.sets ++ [(name, fun _ => ⟨⟨t, true⟩, .nullC t⟩)] }
 
